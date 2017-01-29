@@ -10,12 +10,6 @@ if (xhr.status != 200) {
     var response = JSON.parse(xhr.responseText);
 }
 
-/*function secondsToMinutes(time){
- var minutes = Math.floor(time / 60);
- var seconds = time - minutes * 60;
- return minutes + ":" + seconds;
- }*/
-
 var firstVal = response[0].Seconds;
 var data = response.map(function (item, index) {
     item.Seconds = item.Seconds - firstVal;
