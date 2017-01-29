@@ -1,10 +1,14 @@
 body {
     font: 15px sans-serif;
-    background-color: ghostwhite;
+    background-image: url("../img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 svg {
     background-color: white;
+    opacity: 0.8;
+
 }
 
 .label {

@@ -102,6 +102,9 @@ svg.selectAll(".dot")
     .style("fill", function (d) {
         return color(cValue(d));
     })
+    .text(function(d){
+        return d.Name
+    })
     .on("mouseover", function (d) {
         tooltip.transition()
             .duration(200)
@@ -117,6 +120,16 @@ svg.selectAll(".dot")
             .duration(500)
             .style("opacity", 0);
     });
+
+/*svg.selectAll(".dot")
+    .data(data)
+    .enter().append("circle").append("text")
+    .attr("class", "legend")
+    .style("text-anchor", "middle")
+    .attr("dx", 5)
+    .text(function (d) {
+        return d.Name;
+    });*/
 
 // draw legend
 var legend = svg.selectAll(".legend")
