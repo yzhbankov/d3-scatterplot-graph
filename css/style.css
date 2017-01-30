@@ -10,10 +10,17 @@ svg {
     opacity: 0.8;
 
 }
+.title{
+    font-size: 30px;
+}
 
 .label {
     font-size: 20px;
     text-align: center;
+}
+
+.labels{
+    font-size: 10px;
 }
 
 .graph {
@@ -35,6 +42,11 @@ svg {
 .tooltip {
     position: absolute;
     width: 200px;
-    height: 28px;
+    height: auto;
     pointer-events: none;
+    border-width: 1px;
+    border-color: white;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
 }

@@ -1,6 +1,3 @@
-/**
- * Created by Iaroslav Zhbankov on 29.01.2017.
- */
 var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/cyclist-data.json', false);
 xhr.send();
@@ -16,8 +13,8 @@ var data = response.map(function (item, index) {
     return item;
 });
 console.log(data);
-var margin = {top: 20, right: 20, bottom: 80, left: 40},
-    width = 960 - margin.left - margin.right,
+var margin = {top: 50, right: 80, bottom: 80, left: 40},
+    width = 1020 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 // setup x
@@ -74,7 +71,7 @@ svg.append("g")
     .call(xAxis)
     .append("text")
     .attr("class", "label")
-    .attr("x", width/2+150)
+    .attr("x", width / 2 + 150)
     .attr("y", 50)
     .style("text-anchor", "end")
     .text("Seconds Behind Fastest Time");
@@ -102,7 +99,7 @@ svg.selectAll(".dot")
     .style("fill", function (d) {
         return color(cValue(d));
     })
-    .text(function(d){
+    .text(function (d) {
         return d.Name
     })
     .on("mouseover", function (d) {
@@ -121,15 +118,18 @@ svg.selectAll(".dot")
             .style("opacity", 0);
     });
 
-/*svg.selectAll(".dot")
+var labels = svg.selectAll(".labels")
     .data(data)
-    .enter().append("circle").append("text")
-    .attr("class", "legend")
-    .style("text-anchor", "middle")
-    .attr("dx", 5)
+    .enter().append("g")
+    .attr("class", "labels");
+
+labels.append("text")
+    .attr("x", xMap)
+    .attr("y", yMap)
+    .attr("dx", "1em")
     .text(function (d) {
         return d.Name;
-    });*/
+    });
 
 // draw legend
 var legend = svg.selectAll(".legend")
@@ -143,15 +143,21 @@ var legend = svg.selectAll(".legend")
 // draw legend colored rectangles
 legend.append("circle")
     .attr("r", 3.5)
-    .attr("cx", width-220)
-    .attr("cy", height/2-5)
+    .attr("cx", width - 220)
+    .attr("cy", height / 2 - 5)
     .style("fill", color);
 
 // draw legend text
 legend.append("text")
     .attr("x", width - 200)
-    .attr("y", height/2)
+    .attr("y", height / 2)
     .style("text-anchor", "start")
     .text(function (d) {
         return d;
     });
+
+svg.append("text")
+    .attr("class", "title")
+    .attr("x", 250)
+    .attr("y", -10)
+    .text("Doping in Professional Bicycle Racing");
